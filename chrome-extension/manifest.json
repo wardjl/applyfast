@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "ApplyFa.st \u2013 Job Search Copilot",
+  "version": "0.0.1",
+  "description": "Job search copilot that scores jobs as you browse and finds new matches for you daily.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "contextMenus",
+    "tabs",
+    "aiLanguageModelOriginTrial"
+  ],
+  "host_permissions": [
+    "https://*.convex.cloud/*",
+    "https://*.convex.site/*",
+    "https://*.linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "side-panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.linkedin.com/*"],
+      "js": ["src/content-script/index.tsx"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open ApplyFa.st \u2013 Job Search Copilot"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": ["*://*.linkedin.com/*"],
+      "resources": [
+        "logo.png"
+      ]
+    }
+  ]
+}

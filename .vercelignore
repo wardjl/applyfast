@@ -1,0 +1,13 @@
+# Ignore Chrome extension - it has its own build process
+chrome-extension/
+
+# Ignore Convex development files
+.convex/
+
+# Ignore local environment files (these should be in .gitignore too)
+.env.local
+.env*.local
+
+# Ignore logs
+*.log
+npm-debug.log*

@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["chrome", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../*"],
+      "@/components/*": ["../components/*"],
+      "@/lib/*": ["../lib/*"]
+    }
+  },
+  "include": ["src/**/*", "manifest.json"],
+  "exclude": ["node_modules", "dist"]
+}
